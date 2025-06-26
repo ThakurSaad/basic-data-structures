@@ -6,32 +6,79 @@ int main()
     int x;
     cin >> x;
 
-    for (int i = 1; i < x; i++)
+    int it_count = x / 2,
+        space = x,
+        slash_1 = 1,
+        slash_2 = x;
+
+    // first part
+    for (int i = 1; i <= it_count; i++)
     {
-        cout << "\n";
-
-        int space_for_slash_1 = 0,
-            space_for_slash_2 = x - 1;
-
-        // space for slash 1
-        for (int j = space_for_slash_1; j < x; j++)
+        for (int i = 1; i <= space; i++)
         {
-            // if (j == 1)
-            // {
-            //     continue;
-            // }
-            cout << " " << j;
-            space_for_slash_1++;
+            if (i == slash_1)
+            {
+                cout << "\\";
+                continue;
+            }
+            else if (i == slash_2)
+            {
+                cout << "/";
+                continue;
+            }
+            else
+            {
+                cout << " ";
+            }
         }
 
-        // slash 1
-        // for (int k = 0; k < x; k++)
-        // {
-        //     if (k == i)
-        //     {
-        //         cout << "\\";
-        //     }
-        // }
+        cout << endl;
+
+        slash_1++;
+        slash_2--;
+    }
+
+    // middle part
+    for (int i = 1; i < (x / 2) + 1; i++)
+    {
+        cout << " ";
+    }
+
+    cout << "X" << endl;
+    // cout << slash_1 << " "
+    //      << slash_2;
+
+    // last part
+    for (int i = 0; i <= it_count; i++)
+    {
+        if (i == 0)
+        {
+            slash_1++;
+            slash_2--;
+            continue;
+        }
+        for (int i = 1; i <= space; i++)
+        {
+            if (i == slash_1)
+            {
+                cout << "\\";
+                continue;
+            }
+            else if (i == slash_2)
+            {
+                cout << "/";
+                continue;
+            }
+            else
+            {
+                cout << " ";
+            }
+        }
+
+        cout << endl;
+
+        slash_1++;
+        slash_2--;
     }
 
     return 0;
