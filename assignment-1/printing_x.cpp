@@ -19,12 +19,10 @@ int main()
             if (i == slash_1)
             {
                 cout << "\\";
-                continue;
             }
             else if (i == slash_2)
             {
                 cout << "/";
-                continue;
             }
             else
             {
@@ -45,8 +43,6 @@ int main()
     }
 
     cout << "X" << endl;
-    // cout << slash_1 << " "
-    //      << slash_2;
 
     // last part
     for (int i = 0; i <= it_count; i++)
@@ -57,17 +53,16 @@ int main()
             slash_2--;
             continue;
         }
+
         for (int i = 1; i <= space; i++)
         {
             if (i == slash_1)
             {
                 cout << "\\";
-                continue;
             }
             else if (i == slash_2)
             {
                 cout << "/";
-                continue;
             }
             else
             {
