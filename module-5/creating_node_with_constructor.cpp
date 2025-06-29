@@ -16,17 +16,14 @@ public:
 
 int main()
 {
+    Node *head = new Node(10);
+    Node *a = new Node(20);
+    Node *b = new Node(300);
 
-    Node a(10),
-        b(200),
-        c(30);
+    head->next = a;
+    a->next = b;
 
-    a.next = &b;
-    b.next = &c;
-
-    cout << a.val << endl
-         << a.next->val << endl
-         << a.next->next->val;
+    cout << head->next;
 
     return 0;
 }
