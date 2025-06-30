@@ -14,11 +14,38 @@ public:
     }
 };
 
+void insert_at_head(Node *&head, int val)
+{
+    Node *new_node = new Node(val);
+    new_node->next = head;
+    head = new_node;
+}
+
+void print_liked_list(Node *&head)
+{
+    Node *tmp = head;
+
+    while (tmp != NULL)
+    {
+        cout << tmp->val << endl;
+        tmp = tmp->next;
+    }
+}
+
 int main()
 {
     Node *head = new Node(10);
     Node *a = new Node(20);
     Node *b = new Node(30);
+
+    head->next = a;
+    a->next = b;
+
+    insert_at_head(head, 100);
+    insert_at_head(head, 1100);
+    insert_at_head(head, 140);
+    insert_at_head(head, 700);
+    print_liked_list(head);
 
     return 0;
 }
