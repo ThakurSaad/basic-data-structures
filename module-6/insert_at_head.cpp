@@ -45,6 +45,7 @@ int main()
     insert_at_head(head, 1100);
     insert_at_head(head, 140);
     insert_at_head(head, 700);
+
     print_liked_list(head);
 
     return 0;
