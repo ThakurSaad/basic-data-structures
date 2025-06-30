@@ -3,11 +3,12 @@ using namespace std;
 
 void fun(int *&p)
 {
+    p = NULL;
     // *p = 100;
     // int y = 11;
     // p = &y;
     // cout << "In fun " << *p << endl;
-    cout << "In fun " << &p << endl;
+    cout << "In fun " << p << endl;
 }
 
 int main()
@@ -18,7 +19,8 @@ int main()
     fun(p);
 
     // cout << "In Main " << *p << endl;
-    cout << "In Main " << &p << endl;
+    // cout << "In Main " << &p << endl;
+    cout << "In Main " << p << endl;
 
     return 0;
 }
