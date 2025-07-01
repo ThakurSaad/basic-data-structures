@@ -51,7 +51,7 @@ int main()
     insert_at_any_pos(head, 2, 100);
     insert_at_any_pos(head, 2, 1100);
     insert_at_any_pos(head, 3, 140);
-    insert_at_any_pos(head, 1, 700);
+    insert_at_any_pos(head, 6, 700);
 
     print_liked_list(head);
 
