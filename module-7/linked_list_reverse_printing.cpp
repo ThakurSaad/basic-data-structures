@@ -14,17 +14,6 @@ public:
     }
 };
 
-void print_linked_list(Node *head)
-{
-    Node *tmp = head;
-
-    while (tmp != NULL)
-    {
-        cout << tmp->val << endl;
-        tmp = tmp->next;
-    }
-}
-
 void insert_at_tail(Node *&head, Node *&tail, int val)
 {
     Node *new_node = new Node(val);
@@ -38,6 +27,16 @@ void insert_at_tail(Node *&head, Node *&tail, int val)
 
     tail->next = new_node;
     tail = new_node;
+};
+
+void print_reverse_linked_list(Node *tmp)
+{
+    if (tmp == NULL)
+    {
+        return;
+    }
+    print_reverse_linked_list(tmp->next);
+    cout << tmp->val << endl;
 }
 
 int main()
@@ -49,13 +48,15 @@ int main()
     while (true)
     {
         cin >> val;
+
         if (val == -1)
         {
             break;
         }
         insert_at_tail(head, tail, val);
     }
-    print_linked_list(head);
+
+    print_reverse_linked_list(head);
 
     return 0;
 }
