@@ -39,10 +39,17 @@ void print_reverse_linked_list(Node *tmp)
     print_reverse_linked_list(tmp->next);
 }
 
-void delete_at_any(Node *&head)
+void delete_at_any(Node *&head, int idx)
 {
-    Node *delete_node = head;
-    head = head->next;
+    Node *tmp = head;
+
+    for (int i = 0; i < idx - 1; i++)
+    {
+        tmp = tmp->next;
+    }
+
+    Node *delete_node = tmp->next;
+    tmp->next = tmp->next->next;
     delete delete_node;
 };
 
@@ -63,8 +70,8 @@ int main()
         insert_at_tail(head, tail, val);
     }
 
-    delete_at_any(head);
-    delete_at_any(head);
+    // delete_at_any(head, 3);
+    delete_at_any(head, 3);
     print_reverse_linked_list(head);
 
     return 0;
