@@ -14,7 +14,7 @@ public:
     }
 };
 
-void insert_at_any_pos(Node *&head, int val)
+void insert_at_head(Node *&head, int val)
 {
     Node *new_node = new Node(val);
     new_node->next = head;
@@ -41,10 +41,10 @@ int main()
     head->next = a;
     a->next = b;
 
-    insert_at_any_pos(head, 100);
-    insert_at_any_pos(head, 1100);
-    insert_at_any_pos(head, 140);
-    insert_at_any_pos(head, 700);
+    insert_at_head(head, 100);
+    insert_at_head(head, 1100);
+    insert_at_head(head, 140);
+    insert_at_head(head, 700);
 
     print_liked_list(head);
 
