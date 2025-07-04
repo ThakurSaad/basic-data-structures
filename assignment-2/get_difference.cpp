@@ -29,26 +29,39 @@ void insert_at_tail(Node *&head, Node *&tail, int val)
     tail = new_node;
 }
 
-void sort_linked_list(Node *&head, Node *&tail)
+int max_val(Node *head)
 {
-    for (Node *i = head; i->next != NULL; i = i->next)
+    int mx = INT_MIN;
+    Node *tmp = head;
+
+    while (tmp != NULL)
     {
-        for (Node *j = i->next; j != NULL; j = j->next)
-        {
-            if (i->val > j->val)
-            {
-                swap(i->val, j->val);
-            }
-        }
-        if (i->next->next == NULL)
-        {
-            tail = i->next->next;
-        }
+        mx = max(tmp->val, mx);
+        tmp = tmp->next;
     }
-};
+
+    return mx;
+}
+
+int min_val(Node *head)
+{
+    int mn = INT_MAX;
+    Node *tmp = head;
+
+    while (tmp != NULL)
+    {
+        mn = min(tmp->val, mn);
+        tmp = tmp->next;
+    }
+
+    return mn;
+}
 
 void print_min_max_diff(Node *head)
 {
+    int mx = max_val(head);
+    int mn = min_val(head);
+    cout << mx - mn;
 }
 
 int main()
@@ -69,10 +82,7 @@ int main()
         insert_at_tail(head, tail, val);
     }
 
-    sort_linked_list(head, tail);
-
-    cout << head->val << " " << tail->val;
-    // print_min_max_diff(head);
+    print_min_max_diff(head);
 
     return 0;
 }
