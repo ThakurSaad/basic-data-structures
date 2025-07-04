@@ -39,7 +39,7 @@ void print_reverse_linked_list(Node *tmp)
     print_reverse_linked_list(tmp->next);
 }
 
-void delete_at_tail(Node *&head, int idx)
+void delete_at_any_pos(Node *&head, int idx)
 {
     Node *tmp = head;
 
@@ -71,7 +71,7 @@ int main()
     }
 
     // delete_at_any(head, 3);
-    delete_at_tail(head, 3);
+    delete_at_any_pos(head, 3);
     print_reverse_linked_list(head);
 
     return 0;
