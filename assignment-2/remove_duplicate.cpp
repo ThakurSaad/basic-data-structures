@@ -42,26 +42,24 @@ void print_linked_list(Node *head)
 
 void remove_duplicate(Node *&head)
 {
-    for (Node *i = head; i->next != NULL; i = i->next)
+    Node *i = head;
+    while (i != NULL)
     {
-        Node *prev_node = i;
-
-        for (Node *j = i->next; j != NULL; j = j->next)
+        Node *j = i;
+        while (j->next != NULL)
         {
-            if (i->val == j->val)
+            if (i->val == j->next->val)
             {
-                cout << j->val << endl;
-
-                cout << j->next->val << endl;
-                // j->next = j->next->next;
+                Node *deleteNode = j->next;
+                j->next = j->next->next;
+                delete deleteNode;
             }
-            // if (i->val == j->next->val)
-            // {
-            //     Node *delete_node = j->next;
-            //     j->next = j->next->next;
-            //     delete delete_node;
-            // }
+            else
+            {
+                j = j->next;
+            }
         }
+        i = i->next;
     }
 }
 
