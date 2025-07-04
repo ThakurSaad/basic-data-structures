@@ -14,7 +14,7 @@ public:
     }
 };
 
-int count_elem_linked_list(Node *head)
+int size(Node *head)
 {
     Node *tmp = head;
     int counter = 0;
@@ -55,26 +55,22 @@ void insert_at_tail(Node *&head, Node *&tail, int val)
         return;
     }
 
-    // cout << "val=" << val << "|"
-    //      //  << "head=" << head->next << "|"
-    //      //  << "tail=" << tail->val << "|"
-    //      << "head=" << head->next << "|"
-    //      << "tail=" << tail << "|"
-    //      << endl;
-
     tail->next = new_node;
     tail = new_node;
-    // cout << "val = " << val << endl;
 }
 
-void delete_at_head(Node *&head)
+void print_linked_list(Node *head)
 {
-    Node *delete_node = head;
-    head = head->next;
-    delete delete_node;
-};
+    Node *tmp = head;
 
-void delete_at_pos(Node *&head, int idx)
+    while (tmp != NULL)
+    {
+        cout << tmp->val << " ";
+        tmp = tmp->next;
+    }
+}
+
+void delete_at_any_pos(Node *&head, int idx)
 {
     Node *tmp = head;
 
@@ -86,22 +82,31 @@ void delete_at_pos(Node *&head, int idx)
     Node *delete_node = tmp->next;
     tmp->next = tmp->next->next;
     delete delete_node;
-}
+};
 
-void print_linked_list(Node *head, int x)
+void delete_at_head(Node *&head)
 {
+    if (head == NULL)
+        return;
+
+    Node *delete_node = head;
+    head = head->next;
+    delete delete_node;
+};
+
+void delete_at_tail(Node *&head, Node *&tail, int idx)
+{
+
     Node *tmp = head;
 
-    while (tmp != NULL)
-    {
-        cout << tmp->val << " ";
-        if (x == 1)
-        {
-            cout << "tmp=" << tmp->next << " ";
-        }
+    for (int i = 0; i < idx - 1; i++)
         tmp = tmp->next;
-    }
-}
+
+    Node *delete_node = tmp->next;
+    tmp->next = tmp->next->next;
+    tail = tmp;
+    delete delete_node;
+};
 
 int main()
 {
@@ -113,9 +118,9 @@ int main()
 
     while (q--)
     {
-        int x,
-            v;
+        int x, v;
         cin >> x >> v;
+        int sz = size(head);
 
         if (x == 0)
         {
@@ -131,14 +136,17 @@ int main()
             {
                 delete_at_head(head);
             }
-            else if (v <= (count_elem_linked_list(head) - 1))
-            // else if (v <= (count_elem_linked_list(head)))
+            else if (v == (sz - 1))
             {
-                delete_at_pos(head, v);
+                delete_at_tail(head, tail, v);
+            }
+            else if (v <= (sz - 1))
+            {
+                delete_at_any_pos(head, v);
             }
         }
 
-        print_linked_list(head, x);
+        print_linked_list(head);
         cout << endl;
     }
 
