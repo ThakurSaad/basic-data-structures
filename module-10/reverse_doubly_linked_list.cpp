@@ -6,17 +6,15 @@ class Node
 public:
     int val;
     Node *next;
-    Node *prev;
 
     Node(int val)
     {
         this->val = val;
         this->next = NULL;
-        this->prev = NULL;
     }
 };
 
-void doubly_insert_at_tail(Node *&head, Node *&tail, int val)
+void insert_at_tail(Node *&head, Node *&tail, int val)
 {
     Node *new_node = new Node(val);
 
@@ -28,9 +26,8 @@ void doubly_insert_at_tail(Node *&head, Node *&tail, int val)
     }
 
     tail->next = new_node;
-    new_node->prev = tail;
     tail = new_node;
-}
+};
 
 void print_linked_list(Node *&head)
 {
@@ -43,12 +40,13 @@ void print_linked_list(Node *&head)
     }
 }
 
-void reverse_doubly(Node *head, Node *tail, Node *tmp)
+void cycle_detector_singly(Node *&head, Node *&tail, Node *tmp)
 {
 
-    for (Node *i = head, *j = tail; i != j && i->prev != j; i = i->next, j = j->prev)
+    if (tmp->next == NULL)
     {
-        swap(i->val, j->val);
+        head = tmp;
+        return;
     }
 }
 
@@ -66,10 +64,10 @@ int main()
         {
             break;
         }
-        doubly_insert_at_tail(head, tail, val);
+        insert_at_tail(head, tail, val);
     }
 
-    reverse_doubly(head, tail, head);
+    cycle_detector_singly(head, tail, head);
     print_linked_list(head);
 
     return 0;
