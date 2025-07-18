@@ -40,48 +40,28 @@ int main()
         if (x == 0)
         {
             l.push_front(v);
-            print_forward(l);
-            print_backward(l);
         }
         else if (x == 1)
         {
             l.push_back(v);
-            print_forward(l);
-            print_backward(l);
         }
-        else if (x == 2)
+        else if (x == 2 && !l.empty())
         {
-            if (l.empty())
-            {
-                print_forward(l);
-                print_backward(l);
-                continue;
-            }
-
             if (v == 0)
             {
                 l.pop_front();
-                print_forward(l);
-                print_backward(l);
             }
             else if (v == (sz - 1))
             {
                 l.pop_back();
-                print_forward(l);
-                print_backward(l);
             }
             else if (v < (sz - 1))
             {
                 l.erase(next(l.begin(), v));
-                print_forward(l);
-                print_backward(l);
-            }
-            else
-            {
-                print_forward(l);
-                print_backward(l);
             }
         }
+        print_forward(l);
+        print_backward(l);
     }
 
     return 0;
