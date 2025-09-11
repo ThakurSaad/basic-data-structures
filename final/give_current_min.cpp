@@ -13,17 +13,21 @@ int main()
         cin >> val;
         pq.push(val);
     }
+
     cin >> q;
 
-    int pos, insert_val;
+    int pos, v;
+
     while (q--)
     {
         cin >> pos;
+
         if (pos == 0)
         {
-            cin >> insert_val;
-            pq.push(insert_val);
+            cin >> v;
+            pq.push(v);
         }
+
         else if (pos == 2)
         {
             if (!pq.empty())

@@ -4,13 +4,13 @@ using namespace std;
 class Student
 {
 public:
-    string name;
+    string nm;
     int roll;
     int marks;
 
-    Student(string name, int roll, int marks)
+    Student(string nm, int roll, int marks)
     {
-        this->name = name;
+        this->nm = nm;
         this->roll = roll;
         this->marks = marks;
     }
@@ -64,7 +64,7 @@ int main()
         }
 
         if (!pq.empty())
-            cout << pq.top().nm << " " << pq.top().id << " " << pq.top().score << "\n";
+            cout << pq.top().nm << " " << pq.top().roll << " " << pq.top().marks << "\n";
         else
             cout << "Empty\n";
     }
